@@ -32,7 +32,7 @@ def pr3_search(bursts, obs_mjds, obs_durations, pmin=1.57, pmax=62.8, nbins=8, p
 
     if not pres:
         pres = (pmax-pmin)/(0.1/(np.max(bursts) - np.min(bursts)))
-    periods = np.linspace(pmin, pmax, pres)
+    periods = np.linspace(pmin, pmax, int(pres))
     chi_sqrs = []
     for period in tqdm.tqdm(periods, disable=nopbar):
         chi_sqrs.append(calc_chi_sq(obs_mjds, obs_durations, bursts, period, nbins=nbins))
